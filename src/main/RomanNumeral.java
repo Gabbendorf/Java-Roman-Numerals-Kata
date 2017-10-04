@@ -22,7 +22,6 @@ public class RomanNumeral {
 
     public String convert(int number) {
         StringBuilder romanNumber = new StringBuilder();
-
         while (number > 0) {
             for(int arabicNumber : converter.keySet()) {
                 if (number >= arabicNumber) {
