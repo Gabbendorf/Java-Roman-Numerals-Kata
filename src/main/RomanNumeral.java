@@ -1,10 +1,11 @@
 package main;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class RomanNumeral {
 
-    private LinkedHashMap<Integer, String> converter = new LinkedHashMap<>();
+    private Map<Integer, String> converter = new LinkedHashMap<>();
 
     public RomanNumeral() {
         converter.put(500, "D");
@@ -22,14 +23,10 @@ public class RomanNumeral {
 
     public String convert(int number) {
         StringBuilder romanNumber = new StringBuilder();
-
-        while (number > 0) {
-            for(int arabicNumber : converter.keySet()) {
-                if (number >= arabicNumber) {
-                    romanNumber.append(converter.get(arabicNumber));
-                    number -= arabicNumber;
-                    break;
-                }
+        for (int arabicNumber : converter.keySet()) {
+            while (number >= arabicNumber) {
+                romanNumber.append(converter.get(arabicNumber));
+                number -= arabicNumber;
             }
         }
         return romanNumber.toString();
